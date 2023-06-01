@@ -1,6 +1,7 @@
 // Models Location
 const { restaurantModel } = require("../models/restaurantModel");
 
+
 const allRestaurants = async (req,res) => {
     try {
         const data = await restaurantModel.find();
@@ -58,7 +59,6 @@ const singleRestaurantByIdOfMenu = async (req,res) => {
     }
 }
 
-
 const addMenuById = async (req,res) => {
     const Id   = req.params.id;
     const menuData = req.body;
@@ -82,7 +82,6 @@ const addMenuById = async (req,res) => {
     }
 }
 
-
 const deleteMenuById = async (req,res) => {
     const {rId,mId} = req.params;
     try {
@@ -93,7 +92,7 @@ const deleteMenuById = async (req,res) => {
         const newData = data.filter((el) => el._id != mId);
 
         restroData.menu = newData;
-        
+
         await restroData.save();
 
         res.status(202).send({
