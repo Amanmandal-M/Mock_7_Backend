@@ -13,7 +13,6 @@ const allRestaurants = async (req,res) => {
     }
 }
 
-
 const singleRestaurantById = async (req,res) => {
     const Id = req.params.id;
     try {
@@ -47,7 +46,7 @@ const addRestaurantData = async (req,res) => {
 }
 
 const singleRestaurantByIdOfMenu = async (req,res) => {
-    const id = req.params.id
+    const Id = req.params.id
     try {
         const data = await restaurantModel.findById(Id);
         res.status(200).json(data.menu);
@@ -64,8 +63,11 @@ const addMenuById = async (req,res) => {
     const Id   = req.params.id;
     const menuData = req.body;
     try {
-        
-        const data = await restaurantModel.findByIdAndUpdate({_id:Id},{menu:[...menuData]});        
+        const data = await restaurantModel.findById({_id:Id});
+        data.menu.push(menuData);
+
+        const sendDataToDatabase = await restaurantModel.findByIdAndUpdate({_id:Id},data);
+
         res.status(201).send({
             "Message": "Menu Updated successfully",
             "Data": data
