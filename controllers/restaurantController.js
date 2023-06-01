@@ -67,6 +67,7 @@ const addMenuById = async (req,res) => {
         data.menu.push(menuData);
 
         const sendDataToDatabase = await restaurantModel.findByIdAndUpdate({_id:Id},data);
+        await sendDataToDatabase.save();
 
         res.status(201).send({
             "Message": "Menu Updated successfully",
@@ -83,8 +84,22 @@ const addMenuById = async (req,res) => {
 
 
 const deleteMenuById = async (req,res) => {
+    const {rId,mId} = req.params;
     try {
+        const restroData = await restaurantModel.findById(rId);
+
+        const data = restroData.menu;
+
+        const newData = data.filter((el) => el._id != mId);
+
+        restroData.menu = newData;
         
+        await restroData.save();
+
+        res.status(202).send({
+            Message: "Menu Item deleted successfully",
+            Data: newData,
+        });
     } catch (error) {
         console.log(error.message);
         res.status(500).send({

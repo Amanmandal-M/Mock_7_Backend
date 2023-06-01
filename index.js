@@ -1,5 +1,6 @@
 const express = require('express');
 const cookieParser = require('cookie-parser');
+const cors = require('cors');
 const app = express();
 require('dotenv').config();
 
@@ -18,7 +19,7 @@ const { authentication } = require('./middlewares/authenticationMiddleware');
 // Middlewares
 app.use(express.json());
 app.use(cookieParser());
-
+app.use(cors());
 
 // Default Routes
 app.get('/', (req,res)=>{

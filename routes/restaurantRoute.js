@@ -22,7 +22,7 @@ restaurantRouter.post('/restaurants/:id/menu',addMenuById);
 restaurantRouter.post('/addRestaurant', addRestaurantData);
 
 // This endpoint should allow the user to delete a particular menu item identified by its id from a specific restaurant.
-restaurantRouter.delete('/restaurants/:id/menu/:id',deleteMenuById);
+restaurantRouter.delete('/restaurants/:rId/menu/:mId',deleteMenuById);
 
 
 module.exports = { restaurantRouter }
