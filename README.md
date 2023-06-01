@@ -54,6 +54,8 @@ Note : You can use any of them
 |    └── userRoute.js
 |    └── restaurantRoute.js
 |    └── orderRoute.js
+├── middlewares
+|    └── authenticationMiddleware.js
 ├──controllers
 |    └── userController.js
 |    └── restaurantController.js
@@ -149,7 +151,7 @@ Note:
             <th>STATUS CODE</th>
         </tr>
     </thead>
-    <thead>
+    <tbody>
         <tr>
             <td>POST</td>
             <td>/api/register</td>
@@ -216,7 +218,7 @@ Note:
             <td>This endpoint should allow users to update the status of a specific order identified by its ID.</td>
             <td>204</td>
         </tr>
-    </thead>
+    </tbody>
 </table>
 
 
