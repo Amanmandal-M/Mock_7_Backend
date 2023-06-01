@@ -62,7 +62,7 @@ Note : You can use any of them
 
 Note: 
 
-- Before doing anything first create .env file and put `PORT` , `MONGO_URL` , `NORMAL_KEY`.
+- Before doing anything first create `.env` file and put `PORT` , `MONGO_URL` , `NORMAL_KEY`.
 - `PORT` is for listening the server.
 - `MONGO_URL` is for running database and store your data in database so put your mongo link.
 - `NORMAL_KEY` is for authentication jsonwebtoken so basically this is your secret key .
